@@ -1,0 +1,52 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model SoilReport {
+  id            String          @id @default(uuid()) @db.Uuid
+  state         String          @db.VarChar(255)
+  district      String          @db.VarChar(255)
+  village       String          @db.VarChar(255)
+  pH            Float           @db.Real
+  nitrogen      Float           @db.Real
+  phosphorus    Float           @db.Real
+  potassium     Float           @db.Real
+  organic_matter Float?         @db.Real
+  moisture      Float?          @db.Real
+  texture       String?         @db.VarChar(100)
+  sampling_date DateTime        @db.Date
+  coordinates   Json?
+  notes         String?         @db.Text
+  createdAt     DateTime        @default(now()) @db.Timestamp(6)
+  updatedAt     DateTime        @updatedAt @db.Timestamp(6)
+  recommendations Recommendation[]
+
+  @@index([state, district, village])
+  @@index([sampling_date])
+  @@check(pH >= 0 AND pH <= 14)
+  @@check(nitrogen >= 0)
+  @@check(phosphorus >= 0)
+  @@check(potassium >= 0)
+}
+
+model Recommendation {
+  id            String     @id @default(uuid()) @db.Uuid
+  soilReport    SoilReport @relation(fields: [soilReportId], references: [id])
+  soilReportId  String     @db.Uuid
+  crop_type     String     @db.VarChar(255)
+  fertilizer    String     @db.VarChar(255)
+  quantity      Float      @db.Real
+  application_method String? @db.VarChar(255)
+  season        String?    @db.VarChar(100)
+  notes         String?    @db.Text
+  createdAt     DateTime   @default(now()) @db.Timestamp(6)
+  updatedAt     DateTime   @updatedAt @db.Timestamp(6)
+
+  @@index([soilReportId])
+  @@check(quantity >= 0)
+}
