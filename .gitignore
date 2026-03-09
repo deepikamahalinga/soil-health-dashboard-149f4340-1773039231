@@ -1,0 +1,115 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+package-lock.json
+yarn.lock
+
+# Testing
+coverage
+.nyc_output
+*.lcov
+
+# Next.js
+.next/
+out/
+build
+dist
+.swc/
+
+# Vite
+dist
+dist-ssr
+*.local
+
+# Production
+build
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+
+# Debug logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# IDE - JetBrains
+.idea
+*.iml
+*.ipr
+*.iws
+.idea_modules/
+
+# IDE - Eclipse
+.project
+.classpath
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.pem
+.thumbnails/
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# PostgreSQL
+*.sql
+*.dump
+*.backup
+pg_data/
+
+# Cache and temp files
+.cache/
+.temp/
+.tmp/
+tmp/
+temp/
+
+# Redis
+*.rdb
+redis-data/
+
+# Misc
+*.swp
+*.swo
+.vercel
+.turbo
+public/sitemap.xml
+public/feed.xml
+public/robots.txt
+
+# Build artifacts
+dist/
+build/
+.next/
+out/
+.cache/
+.parcel-cache/
+
+# Test artifacts
+/coverage
+.nyc_output
+junit.xml
+
+# Sentry
+.sentryclirc
+sentry.properties
